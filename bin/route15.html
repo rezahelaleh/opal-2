@@ -1,0 +1,44 @@
+import 'package:animated_bottom_nav_bar_plus/animated_bottom_nav_bar_plus.dart';
+import 'package:flutter/material.dart';
+
+import '../lib/Components/ADVERTISE/addAdvertise.dart';
+import '../lib/Components/CATEGORY/category.dart';
+import '../lib/Components/INDEX/index.dart';
+import '../lib/Components/PROFILE/profile.dart';
+
+
+class Balad extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBottomNavBarPlus(
+          initialPage: 0,
+          onCenterButtonStateChanged: (value) {
+            print('onButtonStateChanged $value');
+          },
+          backgroundColor: Colors.white,
+          floatingButtonStyles: FloatingButtonStyles(),
+          colorButtonDisabled: Colors.grey,
+          onTapFloatingButtonLeft: () {
+            print('onTapFloatingButtonLeft');
+          },
+          onTapFloatingButtonRight: () {
+            print('onTapFloatingButtonRight');
+          },
+          onTapFloatingButtonTop: () {
+            print('onTapFloatingButtonTop');
+          },
+          navBarItems: [
+            NavBarItem(icon: Icons.home, labelText: 'Home'),
+            NavBarItem(icon: Icons.search, labelText: 'Search'),
+            NavBarItem(icon: Icons.person, labelText: 'Profile'),
+            NavBarItem(icon: Icons.settings, labelText: 'Settings'),
+          ],
+          pages:  [
+              const Index(),
+              Category(),
+              const AddAdvertise(),
+              const Profile(),
+          ],
+        );
+  }
+}

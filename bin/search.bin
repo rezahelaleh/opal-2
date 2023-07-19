@@ -1,0 +1,179 @@
+
+import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
+
+import 'index.dart';
+
+class Cxv extends StatefulWidget {
+  const Cxv({Key? key}) : super(key: key);
+
+  @override
+  _CxvState createState() => _CxvState();
+}
+
+class _CxvState extends State<Cxv> {
+  @override
+  Widget build(BuildContext context) {
+    return Builder(
+          builder: (context) {
+            return Center(
+              child: 
+              
+              
+              
+              
+              
+              
+              
+              
+                  Container(
+                //  margin: const EdgeInsets.only(top: 5),
+                 padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                 decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                         width: 1,
+                         color:HexColor("#fefefe"),
+                         
+                       ),
+                        color: HexColor('#fefefe'),
+                ),
+                 child:  
+
+
+            TextField(
+
+              onTap: (){
+                  Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                builder: (BuildContext context) => FullScreenDialog(),
+                fullscreenDialog: true,
+              ),
+            );
+                          },
+            
+          decoration: InputDecoration(
+          filled: true,
+          fillColor: HexColor('#f7f7f7'),
+          hintStyle: TextStyle(color: Colors.black),
+             enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(
+          color: Colors.white,
+          width: 1.0,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(
+          color: Colors.black,
+          width: 1.0,
+              ),
+            ),
+          // labelText: 'label',
+          hintText: 'جستجو ...',
+          // helperText: 'help',
+          // counterText: 'counter',
+          icon: ElevatedButton(
+          style:  ButtonStyle(
+            backgroundColor: MaterialStatePropertyAll(HexColor("#000000")),
+            shape:MaterialStatePropertyAll( RoundedRectangleBorder(  
+                      borderRadius: BorderRadius.circular(15))), 
+            ),
+          onPressed: () { 
+        
+           },
+           child:  SizedBox(
+          width: 55,
+          height: 50,
+          child:  TextButton(
+                child: 
+                Text('آبادان',
+                style: TextStyle(
+                  color: HexColor('#ffffff'),
+                  fontSize: 15
+                ),
+                ),
+                onPressed: () {
+                  showModalBottomSheet(
+                    // constraints: BoxConstraints.expand(height: 200),
+                    isDismissible: true,
+                    isScrollControlled: true,
+                    useSafeArea: true,
+                    clipBehavior:Clip.none ,
+                    // shape: ContinuousRectangleBorder(borderRadius: BorderRadius.circular(60)),
+                    shape: ContinuousRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(60))),
+                    context: context,
+                    // shape: BeveledRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(5))),
+                    // shape: BeveledRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(10))),
+                    builder: (context) {
+                      return Directionality(
+                        textDirection: TextDirection.rtl,
+                        child: Wrap(
+                         
+                          
+                          children: const [
+                      
+                            ListTile(
+                              leading: Icon(Icons.share),
+                              title: Text('Share'),
+                            ),
+                            ListTile(
+                              leading: Icon(Icons.share),
+                              title: Text('Share'),
+                            ),
+                            ListTile(
+                              leading: Icon(Icons.share),
+                              title: Text('Share'),
+                            ),
+                            ListTile(
+                              leading: Icon(Icons.copy),
+                              title: Text('Copy Link'),
+                            ),
+                            ListTile(
+                              leading: Icon(Icons.edit),
+                              title: Text('Edit'),
+                            ),
+                      
+                            // SizedBox(height: 20,),
+                      
+                      
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+        
+           ) ,
+           ),
+          // prefixIcon: Icon(Icons.favorite),
+          // suffixIcon: Icon(Icons.park),
+          ),
+            ),
+                 
+                 
+                 
+                  ),
+       
+
+            );
+          },
+        );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,145 @@
+import 'package:flutter/material.dart';
+class ListTileExample extends StatelessWidget {
+  const ListTileExample({super.key});
+  @override
+  Widget build(BuildContext context) {
+    final listTiles = <Widget>[
+      const ListTile(
+        title: Text('Tile 0: basic'),
+      ),
+      const Divider(),
+      const ListTile(
+        leading: Icon(Icons.face),
+        title: Text('Tile 1: with leading/trailing widgets'),
+        trailing: Icon(Icons.tag_faces),
+      ),
+      const Divider(),
+      const ListTile(
+        title: Text('Tile 2 title'),
+        subtitle: Text('subtitle of tile 2'),
+      ),
+      const Divider(),
+      const ListTile(
+        title: Text('Tile 3: 3 lines'),
+        isThreeLine: true,
+        subtitle: Text('subtitle of tile 3'),
+      ),
+      const Divider(),
+      const ListTile(
+        title: Text('Tile 4: dense'),
+        dense: true,
+      ),
+      const Divider(),
+      ListTile(
+        title: const Text('Tile5: tile with badge'),
+        subtitle: const Text('(This uses the badges package)'),
+        trailing: Badge(
+          label: const Text('3'),
+          child: const Icon(Icons.message),
+        ),
+      ),
+    ];
+    // Directly returning a list of widgets is not common practice.
+    // People usually use ListView.builder, c.f. "ListView.builder" example.
+    // Here we mainly demostrate ListTile.
+    return ListView(children: listTiles);
+  }
+}
+8:54
+.
+8:54
+.
+8:54
+.
+8:54
+Feel free to use the code in your projects but do not forget to give me the credits adding my app (Flutter Animation Gallery) where you are gonna use it.
+------------------------------------------
+// import this Package in pubspec.yaml file
+// dependencies:
+//
+//   flutter_staggered_animations:
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+class MyCustomWidget extends StatefulWidget {
+  @override
+  _MyCustomWidgetState createState() => _MyCustomWidgetState();
+}
+class _MyCustomWidgetState extends State<MyCustomWidget> {
+  @override
+  Widget build(BuildContext c) {
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          child: const Text('VIEW ANIMATING LISTVIEW'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SlideAnimation3()),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+class SlideAnimation3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    double _w = MediaQuery.of(context).size.width;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Go Back"),
+        centerTitle: true,
+        brightness: Brightness.dark,
+      ),
+      body: AnimationLimiter(
+        child: ListView.builder(
+          padding: EdgeInsets.all(_w / 30),
+          physics:
+              BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+          itemCount: 20,
+          itemBuilder: (BuildContext context, int index) {
+            return AnimationConfiguration.staggeredList(
+              position: index,
+              delay: Duration(milliseconds: 100),
+              child: SlideAnimation(
+                duration: Duration(milliseconds: 2500),
+                curve: Curves.fastLinearToSlowEaseIn,
+                child: FadeInAnimation(
+                  curve: Curves.fastLinearToSlowEaseIn,
+                  duration: Duration(milliseconds: 2500),
+                  child: Container(
+                    margin: EdgeInsets.only(bottom: _w / 20),
+                    height: _w / 4,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 40,
+                          spreadRadius: 10,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
